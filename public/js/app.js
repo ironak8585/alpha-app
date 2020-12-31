@@ -21360,10 +21360,10 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/v360/workspace/alpha-app/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /home/v360/workspace/alpha-app/resources/sass/app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! /home/v360/workspace/alpha-app/resources/sass/plugins.scss */"./resources/sass/plugins.scss");
-module.exports = __webpack_require__(/*! /home/v360/workspace/alpha-app/resources/css/custom.css */"./resources/css/custom.css");
+__webpack_require__(/*! /home/aroyal/workspace/web/alpha-app/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /home/aroyal/workspace/web/alpha-app/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/aroyal/workspace/web/alpha-app/resources/sass/plugins.scss */"./resources/sass/plugins.scss");
+module.exports = __webpack_require__(/*! /home/aroyal/workspace/web/alpha-app/resources/css/custom.css */"./resources/css/custom.css");
 
 
 /***/ })

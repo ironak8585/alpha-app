@@ -60,6 +60,9 @@
                 <x-submit class="">
                     {{ __('Login') }}
                 </x-submit>
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                    {{ __('Signup?') }}
+                </a>
                 @if (Route::has('password.request'))
                     <a class="" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}

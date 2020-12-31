@@ -31291,7 +31291,7 @@ try {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/v360/workspace/alpha-app/resources/js/plugins.js */"./resources/js/plugins.js");
+module.exports = __webpack_require__(/*! /home/aroyal/workspace/web/alpha-app/resources/js/plugins.js */"./resources/js/plugins.js");
 
 
 /***/ })

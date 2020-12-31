@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomePageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [HomePageController::class, 'home']);
+Route::get('/welcome', [HomePageController::class, 'welcome']);
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::view('/dashboard', 'dashboard')->name('dashboard');
+
+    Route::prefix('master')
+        ->name('master.')
+        ->group(base_path('routes/master.php'));
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
