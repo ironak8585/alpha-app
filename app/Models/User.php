@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\UuidCodeTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -10,9 +11,9 @@ use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\Config;
 
 
-
 class User extends Authenticatable
 {
+    use UuidCodeTrait;
     use HasFactory, Notifiable, HasRoles;
 
     /**

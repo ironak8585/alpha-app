@@ -14,25 +14,50 @@
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
     <!-- Scripts -->
+    <script src="{{ asset('js/plugins.js') }}"></script>    
+    <script src="{{ asset('js/custom.js') }}"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
-<body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
-        @include('layouts.navigation')
+<body>
 
-        <!-- Page Heading -->
-        <header class="bg-white shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                {{ $header }}
+    <header>
+        @include('components.nav')
+    </header>
+
+    <main>
+        <section class="section pt-1 pb-1">
+            <div class="is-hidden-mobile">
+                @if (isset($breadcrumbs))
+                    <x-breadcrumb :links="$breadcrumbs"></x-breadcrumb>
+                    <div class="divider mt-0 mb-0"></div>
+                @endif
             </div>
-        </header>
+        </section>
 
-        <!-- Page Content -->
-        <main>
-            {{ $slot }}
-        </main>
-    </div>
+        <section class="section">
+            {{ $content }}
+        </section>
+    </main>
+
+    <footer class="footer pt-3 pb-3">
+        <div class="content has-text-centered">
+            <p>
+                <strong>{{ env('APP_NAME') }}</strong>
+                <br />
+                All rights are reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script type="application/javascript">
+        $(document).ready(function() {
+            init();
+        });
+    </script>
+
+    @include('components.notifications')
+
 </body>
 
 </html>

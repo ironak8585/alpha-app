@@ -1,23 +1,20 @@
 @php
 $links = [
-'master' => null,
-'configurations' => 'master.configurations.index'
+    'master' => null,
+    'configurations' => 'master.configurations.index'
 ];
 $fields = [
-'name' => ['text', 'Name'],
-'number' => ['number', 'Number'],
-'select' => ['select', 'Select', ['One', 'Two']],
-'date' => ['date', 'Date'],
-'nrange' => ['range', 'number', 'Number Range'],
-'drange' => ['range', 'date', 'Date Range'],
+    'name' => ['text', 'Name'],
+    'number' => ['number', 'Number'],
+    'select' => ['select', 'Select', ['One', 'Two']],
+    'date' => ['date', 'Date'],
+    'nrange' => ['range', 'number', 'Number Range'],
+    'drange' => ['range', 'date', 'Date Range'],
 ]
 @endphp
-<x-app-layout>
-    <x-slot name="header">
-        Configurations
-    </x-slot>
-
-    @section('content')
+<x-app-layout :breadcrumbs="$links">
+    
+    <x-slot name="content">
         <div class="container">
             <nav class="level">
                 <div class="level-left">
@@ -64,7 +61,7 @@ $fields = [
                                     <td>
                                         <div class="field buttons are-small is-grouped is-grouped-right">
                                             <x-default-action route-prefix="master.configurations" :id="$record->id"
-                                                :show="false">
+                                                :show="true">
                                             </x-default-action>
                                         </div>
                                     </td>
@@ -76,6 +73,7 @@ $fields = [
             </div>
             <x-pagination :records="$records" :filters="$filters"></x-pagination>
         </div>
-    @endsection
+    </x-slot>
+
 
 </x-app-layout>

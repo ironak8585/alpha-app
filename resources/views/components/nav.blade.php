@@ -1,7 +1,7 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item py-0" href="{{ url('/') }}">
-            <img src="{{ asset('images/banner.png') }}" style="max-height: 3.2rem;">
+            <img src="{{ asset('images/banner.png') }}" style="height: 3.2rem;">
         </a>
         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="main-navbar">
             <span aria-hidden="true"></span>
@@ -32,38 +32,6 @@
                 </a>
                 <div class="navbar-dropdown">
                     <a class="navbar-item" href="{{ route('master.configurations.index') }}">Configurations</a>
-                    <a class="navbar-item" href="{{ route('master.units.index') }}">Units</a>
-                    <a class="navbar-item" href="{{ route('master.accounts.index') }}">Accounts</a>
-                </div>
-            </div>
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">
-                    Product
-                </a>
-                <div class="navbar-dropdown">
-                    <a class="navbar-item" href="{{ route('product.categories.index') }}">Categories</a>
-                    <a class="navbar-item" href="{{ route('product.items.index') }}">Items</a>
-                </div>
-            </div>
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">
-                    Purchase
-                </a>
-                <div class="navbar-dropdown">
-                    <a class="navbar-item" href="{{ route('purchase.traders.index') }}">Traders</a>
-                    <a class="navbar-item" href="{{ route('purchase.ledgers.index') }}">Ledgers</a>
-                    <a class="navbar-item" href="{{ route('purchase.bills.index') }}">Bills</a>
-                </div>
-            </div>
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">
-                    Reports
-                </a>
-                <div class="navbar-dropdown">
-                    <a class="navbar-item" href="{{ route('purchase.reports.bills.item.detail') }}">Item Detail</a>
-                    <a class="navbar-item" href="{{ route('purchase.reports.bills.item.summary') }}">Item Summary</a>
-                    <a class="navbar-item" href="{{ route('purchase.reports.bills.category') }}">Category Summary</a>
-                    <a class="navbar-item" href="{{ route('purchase.reports.trader.bills') }}">Trader Bills</a>
                 </div>
             </div>
             @endhasanyrole

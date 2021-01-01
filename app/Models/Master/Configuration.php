@@ -9,16 +9,22 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
-
+use App\Traits\UuidTrait;
 
 class Configuration extends Model
 {
+
+    use UuidTrait;
+
     protected $table = "master_configurations";
     public $timestamps = true;
+
     protected $fillable = [
         'category', 'name', 'key', 'value', 'type',
     ];
+
     protected $casts = [
+        'id' => 'string',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
@@ -166,20 +172,5 @@ class Configuration extends Model
                 Session::put($key, $value);
             }
         }
-    }
-
-    /**
-     * Get vistar labels
-     *
-     * @return void
-     */
-    public static function getVistarLabels()
-    {
-        return [
-            'distict' => Configuration::getValue('VISTAR_DISTRICT_LABEL'),
-            'tehsil' => Configuration::getValue('VISTAR_TEHSIL_LABEL'),
-            'group' => Configuration::getValue('VISTAR_GROUP_LABEL'),
-            'village' => Configuration::getValue('VISTAR_VILLAGE_LABEL'),
-        ];
     }
 }

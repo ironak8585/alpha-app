@@ -84,18 +84,20 @@ class ConfigurationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  string $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         //
+        $config = Configuration::find($id);
+        return view('master.configurations.show', ['config' => $config]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  string $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -109,7 +111,7 @@ class ConfigurationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  string $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -133,7 +135,7 @@ class ConfigurationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  string $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

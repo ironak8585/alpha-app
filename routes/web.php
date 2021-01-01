@@ -20,6 +20,8 @@ Route::get('/welcome', [HomePageController::class, 'welcome']);
 Route::group(['middleware' => ['auth']], function () {
     Route::view('/dashboard', 'dashboard')->name('dashboard');
 
+    Route::match(['get', 'post'], '/users/password', 'Admin\UserController@password')->name('users.password');
+
     Route::prefix('master')
         ->name('master.')
         ->group(base_path('routes/master.php'));
