@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\Admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,11 @@ Route::get('/welcome', [HomePageController::class, 'welcome']);
 Route::group(['middleware' => ['auth']], function () {
     Route::view('/dashboard', 'dashboard')->name('dashboard');
 
-    Route::match(['get', 'post'], '/users/password', 'Admin\UserController@password')->name('users.password');
+    Route::match(['get', 'post'], '/users/password', [UserController::class, 'password'])->name('users.password');
+
+    Route::prefix('admin')
+        ->name('admin.')
+        ->group(base_path('routes/admin.php'));
 
     Route::prefix('master')
         ->name('master.')

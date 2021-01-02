@@ -76,15 +76,17 @@
                 @enderror
             </div>
 
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-submit class="ml-4">
-                    {{ __('Register') }}
-                </x-submit>
+            <div class="level">
+                <div class="level-left">
+                    <x-submit class="is-primary">
+                        {{ __('Register') }}
+                    </x-submit>
+                </div>
+                <div class="level-right">
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                        {{ __('Already registered?') }}
+                    </a>
+                </div>
             </div>
         </form>
     </x-auth-card>

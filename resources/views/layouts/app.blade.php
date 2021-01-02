@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
     <!-- Scripts -->
-    <script src="{{ asset('js/plugins.js') }}"></script>    
+    <script src="{{ asset('js/plugins.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
@@ -28,16 +28,17 @@
     <main>
         <section class="section pt-1 pb-1">
             <div class="is-hidden-mobile">
-                @if (isset($breadcrumbs))
+                @isset($breadcrumbs)
                     <x-breadcrumb :links="$breadcrumbs"></x-breadcrumb>
                     <div class="divider mt-0 mb-0"></div>
-                @endif
+                @endisset
             </div>
         </section>
 
         <section class="section">
             {{ $content }}
         </section>
+
     </main>
 
     <footer class="footer pt-3 pb-3">
@@ -54,6 +55,7 @@
         $(document).ready(function() {
             init();
         });
+
     </script>
 
     @include('components.notifications')

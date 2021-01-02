@@ -59,7 +59,6 @@ class Checkbox extends Component
             $this->options = [];
             $this->margin = $margin ? 'pt-5 mt-2' : '';
         }
-
         //prepare attributes
         $this->attr = "";
         foreach ($attributes as $key => $value) {

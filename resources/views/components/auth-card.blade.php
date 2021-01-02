@@ -2,11 +2,17 @@
     <div class="columns is-centered">
         <div class="column">
             <div class="">
-                {{ $logo }}
+                <a href="/">
+                    <figure class="image is-128x128 is-margin-auto">
+                        <x-application-logo class="" />
+                    </figure>
+                </a>
             </div>
 
-            <div class="box">
-                {{ $slot }}
+            <div class="section">
+                <div class="box">
+                    {{ $slot }}
+                </div>
             </div>
         </div>
     </div>

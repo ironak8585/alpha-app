@@ -1,17 +1,9 @@
 <x-guest-layout>
     <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+        <div class="subtitle">
+            {{ __('Forgot Password') }}
         </div>
-
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
@@ -20,16 +12,30 @@
             @csrf
 
             <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+            <div class="columns">
+                <div class="column">
+                    <x-email name="email" :value="old('email')"></x-email>                
+                </div>                
             </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-button>
+            
+            <div class="level">
+                <div class="level-left">
+                    <x-submit class="is-primary mr-2">
+                        {{ __('Send Link') }}
+                    </x-submit>
+                </div>
+                <div class="level-right">
+                    <div class="level-item">
+                        <a class="button" href="{{ route('login') }}">
+                            {{ __('Login?') }}
+                        </a>
+                    </div>
+                    <div class="level-item">
+                        <a class="button" href="{{ route('register') }}">
+                            {{ __('Signup?') }}
+                        </a>
+                    </div>
+                </div>
             </div>
         </form>
     </x-auth-card>
