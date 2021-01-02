@@ -33,6 +33,7 @@
                 <div class="navbar-dropdown">
                     <a class="navbar-item" href="{{ route('master.configurations.index') }}">Configurations</a>
                     <a class="navbar-item" href="{{ route('master.categories.index') }}">Categories</a>
+                    <a class="navbar-item" href="{{ route('master.countries.index') }}">Countries</a>
                 </div>
             </div>
             @endhasanyrole

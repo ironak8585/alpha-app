@@ -4,6 +4,8 @@ $permisssions = [
 
 
     //Master
+    ["master_countries_write", "web", "Manage Countries"],
+    ["master_countries_read", "web", "Read Countries"],
     ["master_categories_write", "web", "Manage Categories"],
     ["master_categories_read", "web", "Read Categories"],
     ["master_configurations_write", "web", "Manage Configurations"],

@@ -4,6 +4,10 @@ return [
     'APP' => [
         'DEFAULT_RPP' => 10,
         'RECORDS_PER_PAGES' => [10 => 10, 20 => 20, 30 => 30, 40 => 40, 50 => 50, 100 => 100],
+        'EXCEL' => [
+            'CREATOR' => 'Alpha-App',
+            'PROTECT_PASSWORD' => 'Alpha@App',
+        ],
         'CONFIG_CATEGORIES' => [
             'SYSTEM' => 'SYSTEM',
             'APP' => 'APP',
