@@ -34,8 +34,9 @@
                         <a class="navbar-item" href="{{ route('master.configurations.index') }}">Configurations</a>
                         <a class="navbar-item" href="{{ route('master.categories.index') }}">Categories</a>
                         <a class="navbar-item" href="{{ route('master.countries.index') }}">Countries</a>
-                        <a class="navbar-item" href="{{ route('master.diamondshapes.index') }}">Diamond Shapes</a>
-                        <a class="navbar-item" href="{{ route('master.diamondcolors.index') }}">Diamond Colors</a>
+                        <a class="navbar-item" href="{{ route('master.shapes.index') }}">Diamond Shapes</a>
+                        <a class="navbar-item" href="{{ route('master.colors.index') }}">Diamond Colors</a>
+                        <a class="navbar-item" href="{{ route('master.intensities.index') }}">Diamond Colors Intensity</a>
                     </div>
                 </div>
                 @endhasanyrole

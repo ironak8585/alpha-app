@@ -1,7 +1,7 @@
 @php
 $links = [
 'master' => null,
-'diamondcolors' => 'master.diamondcolors.index',
+'colors' => 'master.colors.index',
 'detail' => null
 ];
 @endphp
@@ -18,13 +18,12 @@ $links = [
                 <div class="level-right">
                     <div class="field is-grouped">
                         <p class="control">
-                            <a class="button is-info"
-                                href="{{ route('master.diamondcolors.edit', $diamondcolor->id) }}">
+                            <a class="button is-info" href="{{ route('master.colors.edit', $color->id) }}">
                                 <i class="fas fa-edit"></i>
                             </a>
                         </p>
                         <p class="control">
-                            <a class="button is-primary" href="{{ route('master.diamondcolors.index') }}">
+                            <a class="button is-primary" href="{{ route('master.colors.index') }}">
                                 <i class="fas fa-arrow-left"></i>
                             </a>
                         </p>
@@ -37,12 +36,12 @@ $links = [
                         <div class="level-left">
                             <div class="level-item">
                                 <p class="title has-text-info">
-                                    {{ $diamondcolor->name }}
+                                    {{ $color->name }}
                                 </p>
                             </div>
                             <div class="level-item">
                                 <p class="subtitle is-5 has-text-grey">
-                                    # {{ $diamondcolor->key }}
+                                    # {{ $color->key }}
                                 </p>
                             </div>
                         </div>
@@ -50,7 +49,7 @@ $links = [
                             <div class="level-item">
                                 <div class="tags has-addons is-right">
                                     <span class="tag is-large">Diamond Color</span>
-                                    <span class="tag is-large is-danger">{{ $diamondcolor->diamondcolor }}</span>
+                                    <span class="tag is-large is-danger">{{ $color->color }}</span>
                                 </div>
                             </div>
                         </div>
@@ -58,13 +57,13 @@ $links = [
                     <div class="divider">detail</div>
                     <div class="columns">
                         <div class="column is-3">
-                            <x-info label="Type" :value="$diamondcolor->type" icon="<i class='fas fa-at'></i>"></x-info>
+                            <x-info label="Type" :value="$color->type" icon="<i class='fas fa-at'></i>"></x-info>
                         </div>
                         <div class="column is-3">
-                            <x-info label="Value" :value="$diamondcolor->value"></x-info>
+                            <x-info label="Value" :value="$color->value"></x-info>
                         </div>
                     </div>
-                    <x-timestamps :record="$diamondcolor"></x-timestamps>
+                    <x-timestamps :record="$color"></x-timestamps>
                 </div>
             </article>
         </div>

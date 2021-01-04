@@ -1,7 +1,7 @@
 @php
 $links = [
 'master' => null,
-'diamondshapes' => 'master.diamondshapes.index',
+'shapes' => 'master.shapes.index',
 'edit' => null
 ];
 @endphp
@@ -14,13 +14,13 @@ $links = [
                     <h4 class="title is-4 has-text-primary">Update Diamond Shape</h4>
                 </div>
                 <div class="level-right">
-                    <a class="button is-primary" href="{{ route('master.diamondshapes.index') }}">
+                    <a class="button is-primary" href="{{ route('master.shapes.index') }}">
                         <i class="fas fa-arrow-left"></i>
                     </a>
                 </div>
             </nav>
             <article>
-                {{ Form::model($diamondshape, ['route' => ['master.diamondshapes.update', $diamondshape->id], 'method' => 'PATCH']) }}
+                {{ Form::model($shape, ['route' => ['master.shapes.update', $shape->id], 'method' => 'PATCH']) }}
                 <div class="card">
                     <div class="card-content">
                         <div class="columns is-multiline">

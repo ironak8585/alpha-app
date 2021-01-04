@@ -1,7 +1,7 @@
 @php
 $links = [
 'master' => null,
-'diamondshapes' => 'master.diamondshapes.index',
+'shapes' => 'master.shapes.index',
 'detail' => null
 ];
 @endphp
@@ -18,13 +18,12 @@ $links = [
                 <div class="level-right">
                     <div class="field is-grouped">
                         <p class="control">
-                            <a class="button is-info"
-                                href="{{ route('master.diamondshapes.edit', $diamondshape->id) }}">
+                            <a class="button is-info" href="{{ route('master.shapes.edit', $shape->id) }}">
                                 <i class="fas fa-edit"></i>
                             </a>
                         </p>
                         <p class="control">
-                            <a class="button is-primary" href="{{ route('master.diamondshapes.index') }}">
+                            <a class="button is-primary" href="{{ route('master.shapes.index') }}">
                                 <i class="fas fa-arrow-left"></i>
                             </a>
                         </p>
@@ -37,12 +36,12 @@ $links = [
                         <div class="level-left">
                             <div class="level-item">
                                 <p class="title has-text-info">
-                                    {{ $diamondshape->name }}
+                                    {{ $shape->name }}
                                 </p>
                             </div>
                             <div class="level-item">
                                 <p class="subtitle is-5 has-text-grey">
-                                    # {{ $diamondshape->key }}
+                                    # {{ $shape->key }}
                                 </p>
                             </div>
                         </div>
@@ -50,7 +49,7 @@ $links = [
                             <div class="level-item">
                                 <div class="tags has-addons is-right">
                                     <span class="tag is-large">Diamond Shape</span>
-                                    <span class="tag is-large is-danger">{{ $diamondshape->diamondshape }}</span>
+                                    <span class="tag is-large is-danger">{{ $shape->shape }}</span>
                                 </div>
                             </div>
                         </div>
@@ -58,13 +57,13 @@ $links = [
                     <div class="divider">detail</div>
                     <div class="columns">
                         <div class="column is-3">
-                            <x-info label="Type" :value="$diamondshape->type" icon="<i class='fas fa-at'></i>"></x-info>
+                            <x-info label="Type" :value="$shape->type" icon="<i class='fas fa-at'></i>"></x-info>
                         </div>
                         <div class="column is-3">
-                            <x-info label="Value" :value="$diamondshape->value"></x-info>
+                            <x-info label="Value" :value="$shape->value"></x-info>
                         </div>
                     </div>
-                    <x-timestamps :record="$diamondshape"></x-timestamps>
+                    <x-timestamps :record="$shape"></x-timestamps>
                 </div>
             </article>
         </div>

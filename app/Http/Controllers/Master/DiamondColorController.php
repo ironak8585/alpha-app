@@ -39,7 +39,7 @@ class DiamondColorController extends Controller
         $records = $query->paginate(FilterHelper::rpp($request));
 
         //send response
-        return view('master.diamondcolors.index', [
+        return view('master.colors.index', [
             'records' => $records,
             'filters' => FilterHelper::filters($request),
             'rpp' => FilterHelper::rpp($request),
@@ -54,7 +54,7 @@ class DiamondColorController extends Controller
     public function create()
     {
         //
-        return view('master.diamondcolors.create');
+        return view('master.colors.create');
     }
 
     /**
@@ -86,8 +86,8 @@ class DiamondColorController extends Controller
     public function show($id)
     {
         //
-        $diamondcolor = DiamondColor::find($id);
-        return view('master.diamondcolors.show', ['diamondcolor' => $diamondcolor]);
+        $color = DiamondColor::find($id);
+        return view('master.colors.show', ['color' => $color]);
     }
 
     /**
@@ -99,8 +99,8 @@ class DiamondColorController extends Controller
     public function edit($id)
     {
         //get object
-        $diamondcolor = DiamondColor::find($id);
-        return view('master.diamondcolors.edit', ['diamondcolor' => $diamondcolor]);
+        $color = DiamondColor::find($id);
+        return view('master.colors.edit', ['color' => $color]);
     }
 
     /**
@@ -116,11 +116,11 @@ class DiamondColorController extends Controller
         $this->validate($request, [
             'name' => 'required',
         ]);
-        $diamondcolor = DiamondColor::find($id);
+        $color = DiamondColor::find($id);
         try {
-            $diamondcolor->update($request->all());
+            $color->update($request->all());
             return redirect()
-                ->route('master.diamondcolors.index')
+                ->route('master.colors.index')
                 ->with('success', 'DiamondColor has been updated');
         } catch (\Throwable $th) {
             return back()->withErrors([$th->getMessage()]);
@@ -136,11 +136,11 @@ class DiamondColorController extends Controller
     public function destroy($id)
     {
         //get object
-        $diamondcolor = DiamondColor::find($id);
+        $color = DiamondColor::find($id);
         try {
-            $diamondcolor->delete();
+            $color->delete();
             return redirect()
-                ->route('master.diamondcolors.index')
+                ->route('master.colors.index')
                 ->with('success', 'DiamondColor has been deleted');
         } catch (\Throwable $th) {
             return back()->withErrors('DiamondColor can not be deleted');

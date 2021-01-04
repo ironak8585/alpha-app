@@ -1,26 +1,27 @@
 @php
 $links = [
 'master' => null,
-'diamondcolors' => 'master.diamondcolors.index',
-'edit' => null
+'colors' => 'master.colors.index',
+'create' => null
 ];
 @endphp
 
 <x-app-layout :breadcrumbs="$links">
+
     <x-slot name="content">
         <div class="container">
             <nav class="level">
                 <div class="level-left">
-                    <h4 class="title is-4 has-text-primary">Update Diamond Color</h4>
+                    <h4 class="title is-4 has-text-primary">Create New Diamond Color</h1>
                 </div>
                 <div class="level-right">
-                    <a class="button is-primary" href="{{ route('master.diamondcolors.index') }}">
+                    <a class="button is-primary" href="{{ route('master.colors.index') }}">
                         <i class="fas fa-arrow-left"></i>
                     </a>
                 </div>
             </nav>
             <article>
-                {{ Form::model($diamondcolor, ['route' => ['master.diamondcolors.update', $diamondcolor->id], 'method' => 'PATCH']) }}
+                {{ Form::open(['route' => 'master.colors.store', 'method' => 'POST']) }}
                 <div class="card">
                     <div class="card-content">
                         <div class="columns is-multiline">
@@ -39,4 +40,5 @@ $links = [
             </article>
         </div>
     </x-slot>
+
 </x-app-layout>

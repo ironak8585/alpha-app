@@ -1,7 +1,7 @@
 @php
 $links = [
 'master' => null,
-'diamondcolors' => 'master.diamondcolors.index'
+'colors' => 'master.colors.index'
 ];
 $fields = [
 'name' => ['text', 'Name'],
@@ -17,13 +17,13 @@ $fields = [
                 </div>
                 <div class="level-right">
                     <div class="buttons">
-                        <a class="button is-info is-outlined" href="{{ route('master.diamondcolors.create') }}">
+                        <a class="button is-info is-outlined" href="{{ route('master.colors.create') }}">
                             <span class="icon">
                                 <i class="fas fa-plus"></i>
                             </span>
                             <span>Create New</span>
                         </a>
-                        <x-filter-panel :fields="$fields" :filters="$filters" route="master.diamondcolors">
+                        <x-filter-panel :fields="$fields" :filters="$filters" route="master.colors">
                         </x-filter-panel>
                     </div>
                 </div>
@@ -47,7 +47,7 @@ $fields = [
                                     <td>{{ $record->name }}</td>
                                     <td>
                                         <div class="field buttons are-small is-grouped is-grouped-right">
-                                            <x-default-action route-prefix="master.diamondcolors" :id="$record->id"
+                                            <x-default-action route-prefix="master.colors" :id="$record->id"
                                                 :show="true">
                                             </x-default-action>
                                         </div>

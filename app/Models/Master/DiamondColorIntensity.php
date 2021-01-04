@@ -8,15 +8,15 @@ use App\Traits\UuidTrait;
 use Illuminate\Support\Str;
 
 
-class DiamondColor extends Model
+class DiamondColorIntensity extends Model
 {
     use UuidTrait;
 
-    protected $table = "master_diamond_colors";
+    protected $table = "master_diamond_color_intensities";
     public $timestamps = true;
 
     protected $fillable = [
-        'name'
+        'name', 'is_white'
     ];
 
     protected $casts = [
@@ -42,5 +42,9 @@ class DiamondColor extends Model
     public function setNameAttribute($value)
     {
         $this->attributes['name'] = Str::upper($value);
+    }
+    public function getColorTypeAttribute()
+    {
+        return $this->is_white ? 'White' : 'Color';
     }
 }

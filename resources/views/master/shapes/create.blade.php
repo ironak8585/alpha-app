@@ -1,7 +1,7 @@
 @php
 $links = [
 'master' => null,
-'diamondshapes' => 'master.diamondshapes.index',
+'shapes' => 'master.shapes.index',
 'create' => null
 ];
 @endphp
@@ -15,13 +15,13 @@ $links = [
                     <h4 class="title is-4 has-text-primary">Create New Diamond Shape</h1>
                 </div>
                 <div class="level-right">
-                    <a class="button is-primary" href="{{ route('master.diamondshapes.index') }}">
+                    <a class="button is-primary" href="{{ route('master.shapes.index') }}">
                         <i class="fas fa-arrow-left"></i>
                     </a>
                 </div>
             </nav>
             <article>
-                {{ Form::open(['route' => 'master.diamondshapes.store', 'method' => 'POST']) }}
+                {{ Form::open(['route' => 'master.shapes.store', 'method' => 'POST']) }}
                 <div class="card">
                     <div class="card-content">
                         <div class="columns is-multiline">

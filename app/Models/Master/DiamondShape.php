@@ -5,7 +5,7 @@ namespace App\Models\Master;
 use App\Scopes\OrderScope;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\UuidTrait;
-
+use Illuminate\Support\Str;
 class DiamondShape extends Model
 {
     use UuidTrait;
@@ -32,5 +32,13 @@ class DiamondShape extends Model
     {
         parent::boot();
         static::addGlobalScope(new OrderScope('name', 'asc'));
+    }
+
+    /**
+     * Mutators and Accessors
+     */
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = Str::upper($value);
     }
 }

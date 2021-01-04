@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Master\DiamondShape;
+use App\Models\Master\DiamondColorIntensity;
 use App\Helpers\FilterHelper;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Config;
 
-class DiamondShapeController extends Controller
+class DiamondColorIntensityController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -32,14 +32,14 @@ class DiamondShapeController extends Controller
     {
         //prepare query
         $related = [];
-        $query = DiamondShape::with($related);
+        $query = DiamondColorIntensity::with($related);
         $query = FilterHelper::apply($request, $query, $equals = [], $skips = []);
 
         //get records
         $records = $query->paginate(FilterHelper::rpp($request));
 
         //send response
-        return view('master.shapes.index', [
+        return view('master.intensities.index', [
             'records' => $records,
             'filters' => FilterHelper::filters($request),
             'rpp' => FilterHelper::rpp($request),
@@ -54,7 +54,7 @@ class DiamondShapeController extends Controller
     public function create()
     {
         //
-        return view('master.shapes.create');
+        return view('master.intensities.create');
     }
 
     /**
@@ -65,13 +65,17 @@ class DiamondShapeController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $this->validate($request, [
             'name' => 'required',           
         ]);
+        //prepare data
+        $data = $request->except('_token');
+        $data['is_white'] = isset($request->is_white) ? true : false;
+
+        //save
         try {
-            DiamondShape::create($request->all());
-            return back()->with('success', 'DiamondShape has been added');
+            DiamondColorIntensity::create($data);
+            return back()->with('success', 'DiamondColorIntensity has been added');
         } catch (\Throwable $th) {
             return back()->withErrors([$th->getMessage()]);
         }
@@ -86,8 +90,8 @@ class DiamondShapeController extends Controller
     public function show($id)
     {
         //
-        $shape = DiamondShape::find($id);
-        return view('master.shapes.show', ['shape' => $shape]);
+        $intensity = DiamondColorIntensity::find($id);
+        return view('master.intensities.show', ['intensity' => $intensity]);
     }
 
     /**
@@ -99,8 +103,8 @@ class DiamondShapeController extends Controller
     public function edit($id)
     {
         //get object
-        $shape = DiamondShape::find($id);
-        return view('master.shapes.edit', ['shape' => $shape]);
+        $intensity = DiamondColorIntensity::find($id);
+        return view('master.intensities.edit', ['intensity' => $intensity]);
     }
 
     /**
@@ -116,12 +120,12 @@ class DiamondShapeController extends Controller
         $this->validate($request, [
             'name' => 'required',
         ]);
-        $shape = DiamondShape::find($id);
+        $intensity = DiamondColorIntensity::find($id);
         try {
-            $shape->update($request->all());
+            $intensity->update($request->all());
             return redirect()
-                ->route('master.shapes.index')
-                ->with('success', 'DiamondShape has been updated');
+                ->route('master.intensities.index')
+                ->with('success', 'DiamondColorIntensity has been updated');
         } catch (\Throwable $th) {
             return back()->withErrors([$th->getMessage()]);
         }
@@ -136,14 +140,14 @@ class DiamondShapeController extends Controller
     public function destroy($id)
     {
         //get object
-        $shape = DiamondShape::find($id);
+        $intensity = DiamondColorIntensity::find($id);
         try {
-            $shape->delete();
+            $intensity->delete();
             return redirect()
-                ->route('master.shapes.index')
-                ->with('success', 'DiamondShape has been deleted');
+                ->route('master.intensities.index')
+                ->with('success', 'DiamondColorIntensity has been deleted');
         } catch (\Throwable $th) {
-            return back()->withErrors('DiamondShape can not be deleted');
+            return back()->withErrors('DiamondColorIntensity can not be deleted');
         }
     }
 }
