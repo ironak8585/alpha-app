@@ -4,6 +4,17 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Master\ConfigurationController;
 use App\Http\Controllers\Master\CategoryController;
 use App\Http\Controllers\Master\CountryController;
+use App\Http\Controllers\Master\DiamondShapeController;
+
+/**
+ * Diamond Shapes
+ */
+Route::middleware(['permission:master_diamond_shapes_write'])->group(function () {
+    Route::resource('diamondshapes', DiamondShapeController::class)->except(['index', 'show']);
+});
+Route::middleware(['permission:master_diamond_shapes_read|master_diamond_shapes_write'])->group(function () {
+    Route::resource('diamondshapes', DiamondShapeController::class)->only(['index', 'show']);
+});
 
 /**
  * Countries
