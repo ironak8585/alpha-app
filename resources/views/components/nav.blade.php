@@ -35,6 +35,7 @@
                         <a class="navbar-item" href="{{ route('master.categories.index') }}">Categories</a>
                         <a class="navbar-item" href="{{ route('master.countries.index') }}">Countries</a>
                         <a class="navbar-item" href="{{ route('master.diamondshapes.index') }}">Diamond Shapes</a>
+                        <a class="navbar-item" href="{{ route('master.diamondcolors.index') }}">Diamond Colors</a>
                     </div>
                 </div>
                 @endhasanyrole

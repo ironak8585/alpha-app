@@ -5,6 +5,17 @@ use App\Http\Controllers\Master\ConfigurationController;
 use App\Http\Controllers\Master\CategoryController;
 use App\Http\Controllers\Master\CountryController;
 use App\Http\Controllers\Master\DiamondShapeController;
+use App\Http\Controllers\Master\DiamondColorController;
+
+/**
+ * Diamond Colors
+ */
+Route::middleware(['permission:master_diamond_colors_write'])->group(function () {
+    Route::resource('diamondcolors', DiamondColorController::class)->except(['index', 'show']);
+});
+Route::middleware(['permission:master_diamond_colors_read|master_diamond_colors_write'])->group(function () {
+    Route::resource('diamondcolors', DiamondColorController::class)->only(['index', 'show']);
+});
 
 /**
  * Diamond Shapes
