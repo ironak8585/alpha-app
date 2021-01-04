@@ -7,35 +7,19 @@ use App\Http\Controllers\Master\CountryController;
 use App\Http\Controllers\Master\DiamondShapeController;
 use App\Http\Controllers\Master\DiamondColorController;
 use App\Http\Controllers\Master\DiamondColorIntensityController;
+use App\Http\Controllers\Master\DiamondPropertyController;
+
 
 /**
- * Diamond Colors Intensity
+ * Diamond Properties
  */
-Route::middleware(['permission:master_diamond_color_intensities_write'])->group(function () {
-    Route::resource('intensities', DiamondColorIntensityController::class)->except(['index', 'show']);
-});
-Route::middleware(['permission:master_diamond_color_intensities_read|master_diamond_color_intensities_write'])->group(function () {
-    Route::resource('intensities', DiamondColorIntensityController::class)->only(['index', 'show']);
-});
+Route::middleware(['permission:master_diamonds_properties'])->group(function () {
+    //properties
+    Route::get('diamonds-properties', [DiamondPropertyController::class, 'properties'])->name('diamonds.properties');
 
-/**
- * Diamond Colors
- */
-Route::middleware(['permission:master_diamond_colors_write'])->group(function () {
-    Route::resource('colors', DiamondColorController::class)->except(['index', 'show']);
-});
-Route::middleware(['permission:master_diamond_colors_read|master_diamond_colors_write'])->group(function () {
-    Route::resource('colors', DiamondColorController::class)->only(['index', 'show']);
-});
-
-/**
- * Diamond Shapes
- */
-Route::middleware(['permission:master_diamond_shapes_write'])->group(function () {
-    Route::resource('shapes', DiamondShapeController::class)->except(['index', 'show']);
-});
-Route::middleware(['permission:master_diamond_shapes_read|master_diamond_shapes_write'])->group(function () {
-    Route::resource('shapes', DiamondShapeController::class)->only(['index', 'show']);
+    Route::resource('intensities', DiamondColorIntensityController::class)->except(['create', 'index']);
+    Route::resource('colors', DiamondColorController::class)->except(['create', 'index']);
+    Route::resource('shapes', DiamondShapeController::class)->except(['create', 'index']);
 });
 
 /**

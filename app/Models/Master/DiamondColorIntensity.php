@@ -47,4 +47,20 @@ class DiamondColorIntensity extends Model
     {
         return $this->is_white ? 'White' : 'Color';
     }
+
+    /**
+     * Get list of intensities
+     */
+    public static function getList()
+    {
+        return DiamondColorIntensity::get()->pluck('name', 'id');
+    }
+
+    /**
+     * Get objects of intensities
+     */
+    public static function getObjects()
+    {
+        return DiamondColorIntensity::select('id', 'name')->get();
+    }
 }

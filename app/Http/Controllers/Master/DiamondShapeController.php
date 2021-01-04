@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Config;
 
 class DiamondShapeController extends Controller
 {
+
+    protected $redirect;
+
+
     /**
      * Create a new controller instance.
      *
@@ -20,41 +24,7 @@ class DiamondShapeController extends Controller
     {
         //all actions requires login
         $this->middleware('auth');
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
-    {
-        //prepare query
-        $related = [];
-        $query = DiamondShape::with($related);
-        $query = FilterHelper::apply($request, $query, $equals = [], $skips = []);
-
-        //get records
-        $records = $query->paginate(FilterHelper::rpp($request));
-
-        //send response
-        return view('master.shapes.index', [
-            'records' => $records,
-            'filters' => FilterHelper::filters($request),
-            'rpp' => FilterHelper::rpp($request),
-        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-        return view('master.shapes.create');
+        $this->redirect = 'master.diamonds.properties';
     }
 
     /**
@@ -67,11 +37,13 @@ class DiamondShapeController extends Controller
     {
         //
         $this->validate($request, [
-            'name' => 'required',           
+            'name' => 'required',
         ]);
         try {
             DiamondShape::create($request->all());
-            return back()->with('success', 'DiamondShape has been added');
+            return back()
+                ->with('success', 'Diamond Shape has been added')
+                ->with('property', 'shape');
         } catch (\Throwable $th) {
             return back()->withErrors([$th->getMessage()]);
         }
@@ -120,8 +92,9 @@ class DiamondShapeController extends Controller
         try {
             $shape->update($request->all());
             return redirect()
-                ->route('master.shapes.index')
-                ->with('success', 'DiamondShape has been updated');
+                ->route($this->redirect)
+                ->with('success', 'Diamond Shape has been updated')
+                ->with('property', 'shape');
         } catch (\Throwable $th) {
             return back()->withErrors([$th->getMessage()]);
         }
@@ -140,10 +113,11 @@ class DiamondShapeController extends Controller
         try {
             $shape->delete();
             return redirect()
-                ->route('master.shapes.index')
-                ->with('success', 'DiamondShape has been deleted');
+                ->route($this->redirect)
+                ->with('success', 'Diamond Shape has been deleted')
+                ->with('property', 'shape');
         } catch (\Throwable $th) {
-            return back()->withErrors('DiamondShape can not be deleted');
+            return back()->withErrors('Diamond Shape can not be deleted');
         }
     }
 }

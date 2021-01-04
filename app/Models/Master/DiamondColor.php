@@ -43,4 +43,20 @@ class DiamondColor extends Model
     {
         $this->attributes['name'] = Str::upper($value);
     }
+
+    /**
+     * Get list of colors
+     */
+    public static function getList()
+    {
+        return DiamondColor::get()->pluck('name', 'id');
+    }
+
+    /**
+     * Get objects of colors
+     */
+    public static function getObjects()
+    {
+        return DiamondColor::select('id', 'name')->get();
+    }
 }

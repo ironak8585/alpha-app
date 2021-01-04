@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Config;
 
 class DiamondColorIntensityController extends Controller
 {
+
+    protected $redirect;
+
     /**
      * Create a new controller instance.
      *
@@ -20,41 +23,7 @@ class DiamondColorIntensityController extends Controller
     {
         //all actions requires login
         $this->middleware('auth');
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
-    {
-        //prepare query
-        $related = [];
-        $query = DiamondColorIntensity::with($related);
-        $query = FilterHelper::apply($request, $query, $equals = [], $skips = []);
-
-        //get records
-        $records = $query->paginate(FilterHelper::rpp($request));
-
-        //send response
-        return view('master.intensities.index', [
-            'records' => $records,
-            'filters' => FilterHelper::filters($request),
-            'rpp' => FilterHelper::rpp($request),
-        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-        return view('master.intensities.create');
+        $this->redirect = 'master.diamonds.properties';
     }
 
     /**
@@ -66,7 +35,7 @@ class DiamondColorIntensityController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',           
+            'name' => 'required',
         ]);
         //prepare data
         $data = $request->except('_token');
@@ -75,7 +44,9 @@ class DiamondColorIntensityController extends Controller
         //save
         try {
             DiamondColorIntensity::create($data);
-            return back()->with('success', 'DiamondColorIntensity has been added');
+            return back()
+                ->with('success', 'Diamond Color Intensity has been added')
+                ->with('property', 'intensity');
         } catch (\Throwable $th) {
             return back()->withErrors([$th->getMessage()]);
         }
@@ -124,8 +95,9 @@ class DiamondColorIntensityController extends Controller
         try {
             $intensity->update($request->all());
             return redirect()
-                ->route('master.intensities.index')
-                ->with('success', 'DiamondColorIntensity has been updated');
+                ->route($this->redirect)
+                ->with('success', 'Diamond Color Intensity has been updated')
+                ->with('property', 'intensity');
         } catch (\Throwable $th) {
             return back()->withErrors([$th->getMessage()]);
         }
@@ -144,10 +116,11 @@ class DiamondColorIntensityController extends Controller
         try {
             $intensity->delete();
             return redirect()
-                ->route('master.intensities.index')
-                ->with('success', 'DiamondColorIntensity has been deleted');
+                ->route($this->redirect)
+                ->with('success', 'Diamond Color Intensity has been deleted')
+                ->with('property', 'intensity');
         } catch (\Throwable $th) {
-            return back()->withErrors('DiamondColorIntensity can not be deleted');
+            return back()->withErrors('Diamond Color Intensity can not be deleted');
         }
     }
 }

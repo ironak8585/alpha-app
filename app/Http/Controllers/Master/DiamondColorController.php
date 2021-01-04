@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Config;
 
 class DiamondColorController extends Controller
 {
+
+    protected $redirect;
+
     /**
      * Create a new controller instance.
      *
@@ -20,62 +23,8 @@ class DiamondColorController extends Controller
     {
         //all actions requires login
         $this->middleware('auth');
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
-    {
-        //prepare query
-        $related = [];
-        $query = DiamondColor::with($related);
-        $query = FilterHelper::apply($request, $query, $equals = [], $skips = []);
-
-        //get records
-        $records = $query->paginate(FilterHelper::rpp($request));
-
-        //send response
-        return view('master.colors.index', [
-            'records' => $records,
-            'filters' => FilterHelper::filters($request),
-            'rpp' => FilterHelper::rpp($request),
-        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-        return view('master.colors.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-        $this->validate($request, [
-            'name' => 'required',           
-        ]);
-        try {
-            DiamondColor::create($request->all());
-            return back()->with('success', 'DiamondColor has been added');
-        } catch (\Throwable $th) {
-            return back()->withErrors([$th->getMessage()]);
-        }
-    }
+        $this->redirect = 'master.diamonds.properties';
+    }    
 
     /**
      * Display the specified resource.
@@ -120,8 +69,9 @@ class DiamondColorController extends Controller
         try {
             $color->update($request->all());
             return redirect()
-                ->route('master.colors.index')
-                ->with('success', 'DiamondColor has been updated');
+                ->route($this->redirect)
+                ->with('success', 'Diamond Color has been updated')
+                ->with('property', 'color');
         } catch (\Throwable $th) {
             return back()->withErrors([$th->getMessage()]);
         }
@@ -140,10 +90,11 @@ class DiamondColorController extends Controller
         try {
             $color->delete();
             return redirect()
-                ->route('master.colors.index')
-                ->with('success', 'DiamondColor has been deleted');
+                ->route($this->redirect)
+                ->with('success', 'Diamond Color has been deleted')
+                ->with('property', 'color');
         } catch (\Throwable $th) {
-            return back()->withErrors('DiamondColor can not be deleted');
+            return back()->withErrors('Diamond Color can not be deleted');
         }
     }
 }

@@ -1,7 +1,9 @@
 @php
 $links = [
 'master' => null,
-'shapes' => 'master.shapes.index',
+'diamond' => null,
+'properties' => 'master.diamonds.properties',
+'shape' => null,
 'edit' => null
 ];
 @endphp
@@ -14,7 +16,7 @@ $links = [
                     <h4 class="title is-4 has-text-primary">Update Diamond Shape</h4>
                 </div>
                 <div class="level-right">
-                    <a class="button is-primary" href="{{ route('master.shapes.index') }}">
+                    <a class="button is-primary" href="{{ route('master.diamonds.properties') }}">
                         <i class="fas fa-arrow-left"></i>
                     </a>
                 </div>

@@ -1,7 +1,9 @@
 @php
 $links = [
 'master' => null,
-'colors' => 'master.colors.index',
+'diamond' => null,
+'properties' => 'master.diamonds.properties',
+'color' => null,
 'detail' => null
 ];
 @endphp
@@ -13,7 +15,7 @@ $links = [
         <div class="container">
             <nav class="level">
                 <div class="level-left">
-                    <h4 class="title is-4 has-text-primary">Configuration Detail</h1>
+                    <h4 class="title is-4 has-text-primary">Color Detail</h1>
                 </div>
                 <div class="level-right">
                     <div class="field is-grouped">
@@ -23,7 +25,7 @@ $links = [
                             </a>
                         </p>
                         <p class="control">
-                            <a class="button is-primary" href="{{ route('master.colors.index') }}">
+                            <a class="button is-primary" href="{{ route('master.diamonds.properties') }}">
                                 <i class="fas fa-arrow-left"></i>
                             </a>
                         </p>

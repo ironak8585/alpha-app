@@ -4,6 +4,7 @@ $permisssions = [
 
 
     //Master
+    ["master_diamonds_properties", "web", "Manage Diamond Properties"],
     ["master_countries_write", "web", "Manage Countries"],
     ["master_countries_read", "web", "Read Countries"],
     ["master_categories_write", "web", "Manage Categories"],

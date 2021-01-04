@@ -13,6 +13,23 @@ const init = () => {
 
   //initialize modal actions
   intiModalActions();
+
+  //init tabs
+  initTabs();
+}
+
+const initTabs = () => {
+  $('li.tab').on('click', function () {
+    const $this = $(this);
+    //reset 
+    $('li.tab').removeClass('is-active');
+    $('div.tab-content').addClass('is-hidden');
+    
+    //show selected
+    $this.addClass('is-active');
+    const content = $this.data('content');
+    $('#' + content).removeClass('is-hidden');
+  })
 }
 
 const intiModalActions = () => {

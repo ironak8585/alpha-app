@@ -6,6 +6,7 @@ use App\Scopes\OrderScope;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\UuidTrait;
 use Illuminate\Support\Str;
+
 class DiamondShape extends Model
 {
     use UuidTrait;
@@ -40,5 +41,21 @@ class DiamondShape extends Model
     public function setNameAttribute($value)
     {
         $this->attributes['name'] = Str::upper($value);
+    }
+
+    /**
+     * Get list of shapes
+     */
+    public static function getList()
+    {
+        return DiamondShape::get()->pluck('name', 'id');
+    }
+
+    /**
+     * Get objects of shapes
+     */
+    public static function getObjects()
+    {
+        return DiamondShape::select('id', 'name')->get();
     }
 }
