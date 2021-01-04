@@ -46,5 +46,6 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('info', '\App\View\Components\Show\Info');
         Blade::component('timestamps', '\App\View\Components\Show\Timestamps');
         Blade::component('collection', '\App\View\Components\Show\Collection');
+        Blade::component('tag-list', '\App\View\Components\Show\TagList');
     }
 }

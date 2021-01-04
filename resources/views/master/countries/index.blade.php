@@ -43,36 +43,8 @@ $fields = [
                     </div>
                 </div>
             </nav>
-            <div class="box">
-                <div class="table-container">
-                    <table class="table is-hoverable is-fullwidth">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Name</th>
-                                <th class="has-text-right has-text-link">
-                                    <i class="fas fa-tasks"></i>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($records as $record)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $record->name }}</td>
-                                    <td>
-                                        <div class="field buttons are-small is-grouped is-grouped-right">
-                                            <x-default-action route-prefix="master.countries" :id="$record->id"
-                                                :show="true">
-                                            </x-default-action>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            <x-tag-list route="master.countries" :show="true" :actions="[]" :records="$records" title="name"
+                subtitle="name"></x-tag-list>
             <x-pagination :records="$records" :filters="$filters"></x-pagination>
         </div>
     </x-slot>
