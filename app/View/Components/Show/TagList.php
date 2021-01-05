@@ -15,8 +15,7 @@ class TagList extends Component
     public $routePrefix;
     public $title;
     public $subtitle;
-    public $code;
-    
+        
     /**
      * Create a new component instance.
      *
@@ -24,7 +23,7 @@ class TagList extends Component
      * @param array $actions
      * @return void
      */
-    public function __construct($records, $actions, $route, $title, $show=true, $edit=true, $delete=true, $subtitle = null, $code = null)
+    public function __construct($records, $actions, $route, $title, $show=true, $edit=true, $delete=true, $subtitle = null)
     {
         $this->records = $records;
         $this->actions = $actions;
@@ -34,7 +33,6 @@ class TagList extends Component
         $this->edit = $edit;
         $this->delete = $delete;
         $this->subtitle = $subtitle;
-        $this->code = $code;
     }
 
     /**

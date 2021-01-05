@@ -56,6 +56,6 @@ class DiamondClarity extends Model
      */
     public static function getObjects()
     {
-        return DiamondClarity::select('id', 'name')->get();
+        return DiamondClarity::select('id', 'name', 'code')->get();
     }
 }

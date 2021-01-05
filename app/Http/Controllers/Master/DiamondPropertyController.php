@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Master;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Master\DiamondColor;
 use App\Models\Master\DiamondColorIntensity;
@@ -11,7 +12,7 @@ use App\Models\Master\DiamondCut;
 use App\Models\Master\DiamondPolish;
 use App\Models\Master\DiamondSymmetry;
 use App\Models\Master\DiamondFluroscence;
-use Illuminate\Http\Request;
+use App\Models\Master\DiamondLab;
 
 class DiamondPropertyController extends Controller
 {
@@ -43,7 +44,8 @@ class DiamondPropertyController extends Controller
         $polishes = DiamondPolish::getObjects();
         $symmetries = DiamondSymmetry::getObjects();
         $fluroscences = DiamondFluroscence::getObjects();
+        $labs = DiamondLab::getObjects();
         //send response
-        return view('master.diamonds.properties', compact('colors', 'shapes', 'intensities', 'clarities', 'cuts', 'polishes', 'symmetries', 'fluroscences'));
+        return view('master.diamonds.properties', compact('colors', 'shapes', 'intensities', 'clarities', 'cuts', 'polishes', 'symmetries', 'fluroscences', 'labs'));
     }
 }

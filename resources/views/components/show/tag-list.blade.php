@@ -8,11 +8,6 @@
                         {{ $record->$subtitle }}
                     </h6>
                 @endisset
-                @isset($code)
-                    <h6 class="code is-6 mb-3">
-                        {{ $record->$code }}
-                    </h6>
-                @endisset
                 <div class="field is-grouped is-justify-content-flex-end">
                     @if ($show)
                         <div class="control">

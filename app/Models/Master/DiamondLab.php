@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use App\Traits\UuidTrait;
 use Illuminate\Support\Str;
 
-class DiamondPolish extends Model
+class DiamondLab extends Model
 {
     use UuidTrait;
 
-    protected $table = "master_diamond_polishes";
+    protected $table = "master_diamond_labs";
     public $timestamps = true;
 
     protected $fillable = [
@@ -44,18 +44,18 @@ class DiamondPolish extends Model
     }
 
     /**
-     * Get list of polishes
+     * Get list of labs
      */
     public static function getList()
     {
-        return DiamondPolish::get()->pluck('name', 'id');
+        return DiamondLab::get()->pluck('name', 'id');
     }
 
     /**
-     * Get objects of polishes
+     * Get objects of labs
      */
     public static function getObjects()
     {
-        return DiamondPolish::select('id', 'name', 'code')->get();
+        return DiamondLab::select('id', 'name', 'code')->get();
     }
 }

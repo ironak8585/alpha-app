@@ -56,6 +56,6 @@ class DiamondCut extends Model
      */
     public static function getObjects()
     {
-        return DiamondCut::select('id', 'name')->get();
+        return DiamondCut::select('id', 'name', 'code')->get();
     }
 }

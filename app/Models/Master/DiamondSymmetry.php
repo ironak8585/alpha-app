@@ -56,6 +56,6 @@ class DiamondSymmetry extends Model
      */
     public static function getObjects()
     {
-        return DiamondSymmetry::select('id', 'name')->get();
+        return DiamondSymmetry::select('id', 'name', 'code')->get();
     }
 }

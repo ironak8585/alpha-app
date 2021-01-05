@@ -13,6 +13,7 @@ use App\Http\Controllers\Master\DiamondCutController;
 use App\Http\Controllers\Master\DiamondPolishController;
 use App\Http\Controllers\Master\DiamondSymmetryController;
 use App\Http\Controllers\Master\DiamondFluroscenceController;
+use App\Http\Controllers\Master\DiamondLabController;
 
 
 /**
@@ -30,6 +31,7 @@ Route::middleware(['permission:master_diamonds_properties'])->group(function () 
     Route::resource('polishes', DiamondPolishController::class)->except(['create', 'index']);
     Route::resource('symmetries', DiamondSymmetryController::class)->except(['create', 'index']);
     Route::resource('fluroscences', DiamondFluroscenceController::class)->except(['create', 'index']);
+    Route::resource('labs', DiamondLabController::class)->except(['create', 'index']);
 });
 
 /**
