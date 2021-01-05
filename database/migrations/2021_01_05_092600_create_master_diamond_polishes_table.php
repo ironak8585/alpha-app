@@ -14,7 +14,9 @@ class CreateMasterDiamondPolishesTable extends Migration
     public function up()
     {
         Schema::create('master_diamond_polishes', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->string('code', 8)->unique();
+            $table->string('name', 32);
             $table->timestamps();
         });
     }

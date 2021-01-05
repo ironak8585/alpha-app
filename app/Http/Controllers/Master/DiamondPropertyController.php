@@ -8,6 +8,7 @@ use App\Models\Master\DiamondColorIntensity;
 use App\Models\Master\DiamondShape;
 use App\Models\Master\DiamondClarity;
 use App\Models\Master\DiamondCut;
+use App\Models\Master\DiamondPolish;
 use Illuminate\Http\Request;
 
 class DiamondPropertyController extends Controller
@@ -37,7 +38,8 @@ class DiamondPropertyController extends Controller
         $intensities = DiamondColorIntensity::getObjects();
         $clarities = DiamondClarity::getObjects();
         $cuts = DiamondCut::getObjects();
+        $polishes = DiamondPolish::getObjects();
         //send response
-        return view('master.diamonds.properties', compact('colors', 'shapes', 'intensities', 'clarities', 'cuts'));
+        return view('master.diamonds.properties', compact('colors', 'shapes', 'intensities', 'clarities', 'cuts', 'polishes'));
     }
 }
