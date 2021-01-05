@@ -7,6 +7,7 @@ use App\Http\Controllers\Master\CountryController;
 use App\Http\Controllers\Master\DiamondShapeController;
 use App\Http\Controllers\Master\DiamondColorController;
 use App\Http\Controllers\Master\DiamondColorIntensityController;
+use App\Http\Controllers\Master\DiamondClarityController;
 use App\Http\Controllers\Master\DiamondPropertyController;
 
 
@@ -20,6 +21,7 @@ Route::middleware(['permission:master_diamonds_properties'])->group(function () 
     Route::resource('intensities', DiamondColorIntensityController::class)->except(['create', 'index']);
     Route::resource('colors', DiamondColorController::class)->except(['create', 'index']);
     Route::resource('shapes', DiamondShapeController::class)->except(['create', 'index']);
+    Route::resource('clarities', DiamondClarityController::class)->except(['create', 'index']);
 });
 
 /**

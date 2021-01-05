@@ -20,27 +20,36 @@ $links = [
                             class="subtitle">Shapes</a></li>
                     <li class="tab {{ $property == 'intensity' ? 'is-active' : '' }}" data-content="intensities"><a
                             class="subtitle">Intensities</a></li>
+                    <li class="tab {{ $property == 'clarity' ? 'is-active' : '' }}" data-content="clarities"><a
+                            class="subtitle">Clarities</a></li>
                 </ul>
             </div>
             <div id="colors" class="tab-content {{ $property != 'color' ? 'is-hidden' : '' }}">
                 @include('master.diamonds.property', [
-                    'property' => 'Colors',
-                    'records' => $colors,
-                    'route' => 'master.colors'
+                'property' => 'Colors',
+                'records' => $colors,
+                'route' => 'master.colors'
                 ])
             </div>
             <div id="shapes" class="tab-content {{ $property != 'shape' ? 'is-hidden' : '' }}">
                 @include('master.diamonds.property', [
-                    'property' => 'Shapes',
-                    'records' => $shapes,
-                    'route' => 'master.shapes'
+                'property' => 'Shapes',
+                'records' => $shapes,
+                'route' => 'master.shapes'
                 ])
             </div>
             <div id="intensities" class="tab-content {{ $property != 'intensity' ? 'is-hidden' : '' }}">
                 @include('master.diamonds.property', [
-                    'property' => 'Intensities',
-                    'records' => $intensities,
-                    'route' => 'master.intensities'
+                'property' => 'Intensities',
+                'records' => $intensities,
+                'route' => 'master.intensities'
+                ])
+            </div>
+            <div id="clarities" class="tab-content {{ $property != 'clarity' ? 'is-hidden' : '' }}">
+                @include('master.diamonds.propertywithcode', [
+                'property' => 'Clarities',
+                'records' => $clarities,
+                'route' => 'master.clarities'
                 ])
             </div>
         </div>
