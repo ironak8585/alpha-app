@@ -9,6 +9,7 @@ use App\Models\Master\DiamondShape;
 use App\Models\Master\DiamondClarity;
 use App\Models\Master\DiamondCut;
 use App\Models\Master\DiamondPolish;
+use App\Models\Master\DiamondSymmetry;
 use Illuminate\Http\Request;
 
 class DiamondPropertyController extends Controller
@@ -39,7 +40,8 @@ class DiamondPropertyController extends Controller
         $clarities = DiamondClarity::getObjects();
         $cuts = DiamondCut::getObjects();
         $polishes = DiamondPolish::getObjects();
+        $symmetries = DiamondSymmetry::getObjects();
         //send response
-        return view('master.diamonds.properties', compact('colors', 'shapes', 'intensities', 'clarities', 'cuts', 'polishes'));
+        return view('master.diamonds.properties', compact('colors', 'shapes', 'intensities', 'clarities', 'cuts', 'polishes', 'symmetries'));
     }
 }
