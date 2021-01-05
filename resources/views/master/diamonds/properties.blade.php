@@ -28,6 +28,8 @@ $links = [
                             class="subtitle">Polishes</a></li>
                     <li class="tab {{ $property == 'symmetry' ? 'is-active' : '' }}" data-content="symmetries"><a
                             class="subtitle">Symmetries</a></li>
+                    <li class="tab {{ $property == 'fluroscences' ? 'is-active' : '' }}" data-content="fluroscences"><a
+                            class="subtitle">Fluroscences</a></li>
                 </ul>
             </div>
             <div id="colors" class="tab-content {{ $property != 'color' ? 'is-hidden' : '' }}">
@@ -77,6 +79,13 @@ $links = [
                 'property' => 'Symmetries',
                 'records' => $symmetries,
                 'route' => 'master.symmetries'
+                ])
+            </div>
+            <div id="fluroscences" class="tab-content {{ $property != 'fluroscence' ? 'is-hidden' : '' }}">
+                @include('master.diamonds.property', [
+                'property' => 'Fluroscences',
+                'records' => $fluroscences,
+                'route' => 'master.fluroscences'
                 ])
             </div>
         </div>
