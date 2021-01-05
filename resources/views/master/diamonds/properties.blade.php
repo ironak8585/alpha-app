@@ -22,6 +22,8 @@ $links = [
                             class="subtitle">Intensities</a></li>
                     <li class="tab {{ $property == 'clarity' ? 'is-active' : '' }}" data-content="clarities"><a
                             class="subtitle">Clarities</a></li>
+                    <li class="tab {{ $property == 'cut' ? 'is-active' : '' }}" data-content="cuts"><a
+                            class="subtitle">Cuts</a></li>
                 </ul>
             </div>
             <div id="colors" class="tab-content {{ $property != 'color' ? 'is-hidden' : '' }}">
@@ -50,6 +52,13 @@ $links = [
                 'property' => 'Clarities',
                 'records' => $clarities,
                 'route' => 'master.clarities'
+                ])
+            </div>
+            <div id="cuts" class="tab-content {{ $property != 'cut' ? 'is-hidden' : '' }}">
+                @include('master.diamonds.propertywithcode', [
+                'property' => 'Cuts',
+                'records' => $cuts,
+                'route' => 'master.cuts'
                 ])
             </div>
         </div>
